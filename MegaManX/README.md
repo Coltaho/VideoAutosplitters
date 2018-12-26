@@ -9,16 +9,18 @@ Video Auto Splitter for Mega Man X SNES
 
 - Automatically start the timer when you start a run. Timer starts after selecting Game Start
 - Automatically split after being grabbed on Highway scene
-- Automatically split on helmet ding after each Maverick kill in their stage, as well as Sigma 1-4 last bosses. 
-- Optional splits for 100% run: Chill Penguin Heart and Hadouken
+- [8 MAvs NYI] Automatically split on helmet ding after each Maverick kill in their stage, as well as Sigma 1-4 last bosses. 
+- [NYI] Optional splits for 100% run: Chill Penguin Heart and Hadouken
+- Automatically reset when the Capcom logo displays on screen
 
-## Manual Installation (skip if you used the 'Activate' Button)
+## Manual Installation (Required at the moment)
 
  (TO BE FIXED)
-- Download https://raw.githubusercontent.com/Coltaho/Autosplitters/master/MegaManX/MMXautosplit.asl
-- Edit Layout
-- Add Other /Scriptable Componment / Script Path: Browse to the "MMXautosplit.asl" file you downloaded previously
-- Enable Start/Split feature here
+- Download the whole folder and zip it: https://raw.githubusercontent.com/Coltaho/Autosplitters/master/MegaManX/
+- LiveSplit -> Edit Layout
+- Add Compenent: Control -> Video AutoSplitter
+- Set game profile: Browse to the zip of the folder you downloaded previously
+- Enable Start/Reset/Split features and options here
 
 ## Bugs
 
