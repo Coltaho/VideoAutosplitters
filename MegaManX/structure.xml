@@ -188,10 +188,10 @@
 		<WatchZone>
           <Name>sigma4_start</Name>
           <Geometry>
-            <X>234</X>
+            <X>185</X>
             <Y>13</Y>
-            <Width>22</Width>
-            <Height>11</Height>
+            <Width>71</Width>
+            <Height>17</Height>
             <Anchor>Undefined</Anchor>
           </Geometry>
           <ScaleType>Undefined</ScaleType>
@@ -205,7 +205,7 @@
               <WatcherType>Standard</WatcherType>
               <WatchImages>
                 <WatchImage>
-                  <FilePath>sigma4\sigma_start.png</FilePath>
+                  <FilePath>sigma4\sigma_start2.png</FilePath>
                 </WatchImage>
               </WatchImages>
             </Watcher>

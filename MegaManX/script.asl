@@ -13,7 +13,7 @@ startup
 	// settings.Add("kuwanger", true, "Kuwanger", "mavs");
 	// settings.Add("chameleon", true, "Chameleon", "mavs");
 	// settings.Add("mandrill", true, "Mandrill", "mavs");
-	// settings.Add("eagle", true, "Eagle", "mavs");
+	//settings.Add("eagle", true, "Eagle", "mavs");
 	// settings.Add("armadillo", true, "Armadillo", "mavs");
 	// settings.Add("octopus", true, "Octopus", "mavs");
 	
@@ -40,12 +40,12 @@ init
 {	
 	vars.HelmetDingLR = (Func<int, string, bool>)((frame, name) =>
 	{
-		return (features[frame, name+"_l"].current > 14 || features[frame, name+"_r"].current > 14);
+		return (features[frame, name+"_l"].current > 93 || features[frame, name+"_r"].current > 93);
 	});
 	
 	vars.isSigmaDead = (Func<int, bool>)((frame) =>
 	{
-		return (vars.isFightingSigma && features[frame, "sigma_end"].current > 22);
+		return (vars.isFightingSigma && features[frame, "sigma_end"].current > 94);
 	});
 	
 	vars.GetSplitList = (Func<int, Dictionary<string, bool>>)((frame) =>
@@ -53,7 +53,7 @@ init
 		var splits = new Dictionary<string, bool>
 		{
 			//Intro
-			{ "grab", (features[frame, "grab1"].current > 14.4) },
+			{ "grab", (features[frame, "grab1"].current > 93.5) },
 			
 			//8 Mavericks
 			// { "penguin", vars.HelmetDingLR(frame, "penguin") },
@@ -61,7 +61,7 @@ init
 			// { "kuwanger", vars.HelmetDingLR(frame, "kuwanger") },
 			// { "chameleon", vars.HelmetDingLR(frame, "chameleon") },
 			// { "mandrill", vars.HelmetDingLR(frame, "mandrill") },
-			// { "eagle", vars.HelmetDingLR(frame, "eagle") },
+			// { "eagle", (features[frame, "eagle1"].current > 91.5) },
 			// { "armadillo", vars.HelmetDingLR(frame, "armadillo") },
 			// { "octopus", vars.HelmetDingLR(frame, "octopus") },
 			
@@ -92,14 +92,22 @@ update
 		print("--[Autosplitter] Timer reset, clearing past splits and variables");
 	}
 	
+	if (timer.CurrentPhase == TimerPhase.Running) {
+		features["start1"].pause();
+		features["reset1"].resume();
+	} else {
+		features["start1"].resume();
+		features["reset1"].pause();
+	}
+	
 	//Start Sigma fight
-	if (!vars.isFightingSigma && features["sigma_start"].current > 22) {
+	if (!vars.isFightingSigma && features["sigma_start2"].current > 94.8) {
 		print("--[Autosplitter] Started Wolf Sigma");
 		vars.isFightingSigma = true;
 	}
 
 	//Reset Sigma fight if white screen
-	if (vars.isFightingSigma && features["flash"].current > 36)	{
+	if (vars.isFightingSigma && features["flash"].current > 96)	{
 		print("--[Autosplitter] Died to Wolf Sigma");
 		vars.isFightingSigma = false;
 	}
@@ -107,17 +115,17 @@ update
 
 start
 {
-	return features["start1"].current > 13;
+	return features["start1"].current > 95;
 }
 
 reset
 {
-	return features["reset1"].current > 13.5;
+	return features["reset1"].current > 95;
 }
 
 split
 {
-	var splits = vars.GetSplitList(features.OriginalIndex);
+	var splits = vars.GetSplitList(frameIndex);
 	foreach (var split in splits)
 	{
 		if (settings[split.Key] && !vars.pastSplits.Contains(split.Key) && split.Value)
